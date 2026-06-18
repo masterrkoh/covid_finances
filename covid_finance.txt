@@ -1,0 +1,64 @@
+1.Explore Data
+
+Change column names to make easier to access
+ALTER TABLE xlk_us_d RENAME field6 TO volume 
+
+PRE-COVID PEAK
+
+SELECT dates,close FROM xlk_us_d WHERE dates = 2020-02; **Looking to get pre-covid peaks but "2020-02" fails to produce results**
+
+SELECT dates,close FROM xlk_us_d WHERE dates like "2020-02%"; ** "%" means anything after this. The peak for the tech sector is 19/02/2020 at 48.8124
+
+SELECT dates,close FROM xlf_us_d WHERE dates like "2020-02%"; **Peak for finance sector comes on 14/02/2020 at 29.4371
+
+SELECT dates,close FROM xlv_us_d WHERE dates like "2020-02%";**Peak for health sector came on 12/02/2020 at 99.9156**
+
+SELECT dates,close FROM xle_us_d WHERE dates like "2020-02%";**Peak for energy came on 12/02/2020 at 21.35665**
+
+SELECT dates,close FROM xly_us_d WHERE dates like "2020-02%";**Peak for commercial discretionary came on 20/02/2024 at 62.44**
+
+
+COVID CRASH
+
+SELECT dates,close FROM xlk_us_d WHERE dates like "2020-03%"; **Lowest point for technology is on 23/03/2020 at 33.6051**
+
+SELECT dates,close FROM xlf_us_d WHERE dates like "2020-03%"; ** Lowest point for finance is on 23/03/2020 at 16.819**
+
+SELECT dates,close FROM xlv_us_d WHERE dates like "2020-03%"; **Lowest point for health is on 23/03/2020 at 71.8081** 
+
+SELECT dates,close FROM xly_us_d WHERE dates like "2020-03%"; **Lowest point for commercial discretionary is on 18/03/2020 at 41.5356 **
+
+SELECT dates,close FROM xle_us_d WHERE dates like "2020-03%"; **Lowest point for energy is on 18/03/2020 9.30448**
+
+
+The two dates have been 18/03/2020 and 23/03/2020. Energy and discretionary crashed earlier than finance,health and tech. **Why?**
+
+
+POST COVID HIGH
+
+SELECT dates,close from xlk_us_d WHERE close >=48.8 AND dates> '2020-03-31' ORDER BY dates ASC LIMIT 1; ** Date recovered was 09/06/2020 at 48.8752**
+
+SELECT dates,close from xlf_us_d WHERE close >=29.4 AND dates> '2020-03-31' ORDER BY dates ASC LIMIT 1; ** Date recovered was 2021-01-06 at 29.55**
+
+SELECT dates,close from xlv_us_d WHERE close >=99.9 AND dates> '2020-03-31' ORDER BY dates ASC LIMIT 1; **Date recovered 2020-06-08 at 99.9943**
+
+SELECT dates,close from xly_us_d WHERE close >=62.4  AND dates> '2020-03-31' ORDER BY dates ASC LIMIT 1; **Date recovered 2020-06-05 at 62.6399**
+
+SELECT dates,close from xle_us_d WHERE close >=21.35 AND dates> '2020-03-31' ORDER BY dates ASC LIMIT 1; **Date recovered 2021-03-05 at 21.9142**
+
+**Consumer discretionary recovered first,followed by health and then tech**
+
+Consumer discretionary crashed earlier because of the pandemic. People weren't going out as much. Restrictions were made and people were scared of catching the virus.
+
+Energy crashed because of the pandemic as well as the price war between Saudi arabia and Russia which is why it took energy so long to recover as well.
+
+Days taken to recover
+CD - 82 days
+H - 77 days
+T - 78 days
+E - 352 days
+F - 289 days 
+
+
+So it took Health 77 days to recover.
+
